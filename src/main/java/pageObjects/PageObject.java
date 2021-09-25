@@ -1,6 +1,7 @@
 package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import setup.IPageObject;
 
@@ -25,13 +26,18 @@ public class PageObject implements IPageObject {
 
     }
 
-
     @Override
     public WebElement getWelement(String weName) throws NoSuchFieldException, IllegalAccessException {
         // use reflection technique
         Field field = somePageObject.getClass().getDeclaredField(weName);
         field.setAccessible(true);
         return (WebElement) field.get(somePageObject);
+    }
 
+    @Override
+    public List<WebElement> getListWelements(String weName) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+        Field field = somePageObject.getClass().getDeclaredField(weName);
+        field.setAccessible(true);
+        return (List<WebElement>) field.get(somePageObject);
     }
 }
