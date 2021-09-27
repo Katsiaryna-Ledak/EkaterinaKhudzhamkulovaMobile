@@ -1,11 +1,11 @@
-How to start android tests locally:
+## How to start android tests locally:
 
-Run emulated android device in AVD Manager
-Start Appium server
-Start tests:
+- Run emulated android device in AVD Manager
+- Start Appium server
+- Start tests:
 
-native
+**native:**
 mvn clean test -P native
 
-web
+**web:**
 mvn clean test -P web
