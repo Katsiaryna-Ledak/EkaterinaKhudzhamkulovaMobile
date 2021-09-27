@@ -18,4 +18,12 @@ public class WebPageObject  {
         PageFactory.initElements(appiumDriver, this);
     }
 
+    public WebElement getSearchField() {
+        return searchField;
+    }
+
+    public List<WebElement> getSearchList() {
+        return searchResults;
+    }
+
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.WebPageObject;
 import setup.BaseTest;
 import utils.TestProperties;
 
@@ -24,15 +25,17 @@ public class webMobileTests extends BaseTest {
             wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
 
-        // enter EPAM word to the search field end click ENTER
-        getPo().getWelement("searchField").sendKeys(searchTerm);
-        getPo().getWelement("searchField").sendKeys(Keys.ENTER);
+        WebPageObject webPageObject = new WebPageObject(getDriver());
+        WebElement searchField = webPageObject.getSearchField();
+        searchField.click();
+        searchField.sendKeys(searchTerm);
+        searchField.sendKeys(Keys.ENTER);
 
         // get list of search result
-        List<WebElement> searchResults = getPo().getListWelements("searchResults");
+        List<WebElement> searchResults = webPageObject.getSearchList();
         Assert.assertFalse(searchResults.isEmpty());
 
-        // get the first result in the result
+        // get the first result in the result and check if it's relevant to our search term
         String firstResultInSearchBunch = searchResults.get(0).getText();
         Assert.assertTrue(firstResultInSearchBunch.contains(searchTerm));
 
