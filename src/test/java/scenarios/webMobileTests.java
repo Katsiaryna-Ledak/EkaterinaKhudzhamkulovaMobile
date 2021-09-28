@@ -15,7 +15,8 @@ public class webMobileTests extends BaseTest {
 
     @Test(groups = {"web"}, description = "Make sure receiving relevant results by search in Google search page",
           dataProviderClass = DataProviders.class, dataProvider = "webTestData")
-    public void testValidateSearchResults(String searchTerm, String site) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public void testValidateSearchResults(String searchTerm, String site)
+        throws NoSuchFieldException, IllegalAccessException, InstantiationException {
 
         // go to google page
         getDriver().get(site);
@@ -35,8 +36,9 @@ public class webMobileTests extends BaseTest {
         Assert.assertFalse(searchResults.isEmpty());
 
         // get the first result in the result and check if it's relevant to our search term
-        for (int i = 0; i < searchResults.size(); i++){
-            Assert.assertTrue(webPageObject.checkIfSearchResultContainsText(searchTerm), "Search results are not relevant");
+        for (int i = 0; i < searchResults.size(); i++) {
+            Assert.assertTrue(webPageObject.checkIfSearchResultContainsText(searchTerm),
+                "Search results are not relevant");
         }
     }
 }

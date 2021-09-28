@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class NativePageObject  {
+public class NativePageObject {
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/email_sign_in_button")
     WebElement signInBtn;
@@ -32,7 +32,7 @@ public class NativePageObject  {
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/registration_confirm_password")
     WebElement confirmPasswordField;
 
-    @AndroidFindBy(id ="platkovsky.alexey.epamtestapp:id/register_new_account_button")
+    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_new_account_button")
     WebElement registerNewAccountBtn;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/" +
@@ -41,8 +41,11 @@ public class NativePageObject  {
         "android.widget.TextView")
     WebElement budgetPageName;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/TextInputLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+    WebElement suggestionContainer;
+
     public NativePageObject(AppiumDriver appiumDriver) {
-        PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
+        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
     }
 
     public WebElement getRegisterBtn() {
@@ -81,5 +84,10 @@ public class NativePageObject  {
         return signInBtn;
     }
 
-
+    public boolean isSuggestionContainerShown() {
+        if (suggestionContainer.isDisplayed()) {
+            return true;
+        }
+        return false;
+    }
 }
