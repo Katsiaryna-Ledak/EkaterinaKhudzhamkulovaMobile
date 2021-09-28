@@ -45,5 +45,41 @@ public class NativePageObject  {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
     }
 
+    public WebElement getRegisterBtn() {
+        return registerBtn;
+    }
+
+    public WebElement getMailField() {
+        return mailField;
+    }
+
+    public WebElement getUserNameField() {
+        return userNameField;
+    }
+
+    public WebElement getPasswordForNewAccountField() {
+        return passwordForNewAccountField;
+    }
+
+    public WebElement getConfirmPasswordField() {
+        return confirmPasswordField;
+    }
+
+    public WebElement getRegisterNewAccountBtn() {
+        return registerNewAccountBtn;
+    }
+
+    public WebElement getLoginField() {
+        return loginField;
+    }
+
+    public WebElement getPasswordField() {
+        return passwordField;
+    }
+
+    public WebElement getSignInBtn() {
+        return signInBtn;
+    }
+
 
 }

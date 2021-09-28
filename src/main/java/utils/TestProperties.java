@@ -11,24 +11,25 @@ public class TestProperties {
     private static String NativeDataPropsPath = "src/main/resources/testnative.properties";
     private static String WebDataPropsPath = "src/main/resources/testweb.properties";
 
-    static {
+    public static Properties getTestNativeDataProperties() {
         testNativeDataProperties = new Properties();
-        testWebDataProperties = new Properties();
-        try (InputStream in = new FileInputStream(NativeDataPropsPath);
-             InputStream in2 = new FileInputStream(WebDataPropsPath)){
+        try (InputStream in = new FileInputStream(NativeDataPropsPath)){
             testNativeDataProperties.load(in);
-            testWebDataProperties.load(in2);
         }catch (IOException ex){
             System.out.println("Can not load properties file");
             ex.printStackTrace();
         }
-    }
-
-    public static Properties getTestNativeDataProperties() {
         return testNativeDataProperties;
     }
 
     public static Properties getTestWebDataProperties() {
+        testWebDataProperties = new Properties();
+        try (InputStream in = new FileInputStream(WebDataPropsPath)){
+            testWebDataProperties.load(in);
+        }catch (IOException ex){
+            System.out.println("Can not load properties file");
+            ex.printStackTrace();
+        }
         return testWebDataProperties;
     }
 }

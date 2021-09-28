@@ -2,6 +2,7 @@ package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -24,6 +25,15 @@ public class WebPageObject  {
 
     public List<WebElement> getSearchList() {
         return searchResults;
+    }
+
+    public Boolean checkIfSearchResultContainsText(String searchTeem) {
+        for (WebElement searchItem: getSearchList()) {
+            if (searchItem.getText().contains(searchTeem)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
