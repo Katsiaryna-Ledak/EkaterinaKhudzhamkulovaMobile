@@ -25,8 +25,7 @@ public class DataProviders {
         return new Object[][] {{
             TestProperties.getWrongDataProperties().getProperty("WRONG_EMAIL"),
             TestProperties.getWrongDataProperties().getProperty("WRONG_PASSWORD"),
-            TestProperties.getWrongDataProperties().getProperty("USER_EMAIL"),
-            TestProperties.getWrongDataProperties().getProperty("USER_PASSWORD"),
-            TestProperties.getWrongDataProperties().getProperty("USER_NAME")}};
+            TestProperties.getWrongDataProperties().getProperty("ERR_MESSAGE"),
+            TestProperties.getWrongDataProperties().getProperty("IMG_PATH"),}};
     }
 }

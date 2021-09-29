@@ -1,10 +1,18 @@
 package scenarios;
 
 import dataProviders.DataProviders;
+import java.io.File;
+import java.io.IOException;
+import net.sourceforge.tess4j.TesseractException;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.NativePageObject;
 import setup.BaseTest;
+import utils.ScreenshotMaker;
 
 public class nativeMobileTests extends BaseTest {
 
@@ -43,40 +51,26 @@ public class nativeMobileTests extends BaseTest {
 
     @Test(groups = {"native"}, description = "Login with wrong credentials",
           dataProviderClass = DataProviders.class, dataProvider = "wrongLoginTestData")
-    public void testLoginWithWrongData(String wrongUserEmail, String wrongUserPassword, String correctEmail,
-                                       String correctPassword, String correctName)
-        throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public void testLoginWithWrongData(String wrongUserEmail, String wrongUserPassword, String toastMessage, String pathToScreenshot)
+        throws IOException, TesseractException {
 
         NativePageObject nativePageObject = new NativePageObject(getDriver());
 
-        // register new account
-        nativePageObject.getRegisterBtn().click();
-        nativePageObject.getMailField().sendKeys(correctEmail);
-        nativePageObject.getUserNameField().sendKeys(correctName);
-        nativePageObject.getPasswordForNewAccountField().sendKeys(correctPassword);
-        nativePageObject.getConfirmPasswordField().sendKeys(correctPassword);
-        nativePageObject.getRegisterNewAccountBtn().click();
-
+        System.out.println("Starting test with wrong data");
         // provided wrong info for login
         nativePageObject.getLoginField().sendKeys(wrongUserEmail);
         nativePageObject.getPasswordField().sendKeys(wrongUserPassword);
         nativePageObject.getSignInBtn().click();
 
-        // if error message is displayed, clear the fields
-        if (nativePageObject.isSuggestionContainerShown() == true) {
+        System.out.println("Making a screenshot");
+        // make the screenshot and search for toast message
+        ScreenshotMaker sm = new ScreenshotMaker();
+        boolean isToastMessageDisplayed = sm.verifyToastMessage(toastMessage, pathToScreenshot);
+
+        if (isToastMessageDisplayed == true) {
             nativePageObject.getMailField().clear();
             nativePageObject.getPasswordField().clear();
         }
 
-        // try to log in with correct data provided
-        nativePageObject.getLoginField().sendKeys(correctEmail);
-        nativePageObject.getPasswordField().sendKeys(correctPassword);
-        nativePageObject.getSignInBtn().click();
-
-        String actualBudgetPageName = getPo().getWelement("budgetPageName").getText();
-        String expectedBudgetPageName = "BudgetActivity";
-
-        Assert.assertEquals(actualBudgetPageName, expectedBudgetPageName);
-        System.out.println("Registration was successful");
     }
 }
