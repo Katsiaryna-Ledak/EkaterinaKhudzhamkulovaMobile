@@ -19,4 +19,5 @@ public class DataProviders {
             TestProperties.getTestWebDataProperties().getProperty("KEY_WORD"),
             TestProperties.getTestWebDataProperties().getProperty("GOOGLE_URL")}};
     }
+
 }

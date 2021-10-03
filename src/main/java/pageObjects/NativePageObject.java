@@ -41,6 +41,9 @@ public class NativePageObject  {
         "android.widget.TextView")
     WebElement budgetPageName;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/TextInputLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+    WebElement suggestionContainer;
+
     public NativePageObject(AppiumDriver appiumDriver) {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
     }
@@ -80,6 +83,5 @@ public class NativePageObject  {
     public WebElement getSignInBtn() {
         return signInBtn;
     }
-
 
 }

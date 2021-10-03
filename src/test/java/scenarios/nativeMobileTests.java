@@ -38,6 +38,6 @@ public class nativeMobileTests extends BaseTest {
 
         Assert.assertEquals(actualBudgetPageName, expectedBudgetPageName);
         System.out.println("Registration was successful");
-
     }
+
 }
