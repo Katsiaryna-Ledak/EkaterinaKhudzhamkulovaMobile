@@ -2,7 +2,7 @@
 <suite name="Android Native mobile testing Suite for EPAM Mobile Cloud">
   <parameter name="execution" value="cloud"/>
   <parameter name="appType" value="native"/>
-  <parameter name="udid" value="9A311FFAZ001WY"/>
+  <parameter name="udid" value="0A071FDD4005QL"/>
   <parameter name="platformName" value="Android"/>
   <parameter name="appPackage" value="platkovsky.alexey.epamtestapp"/>
   <parameter name="appActivity" value="activities.LoginActivity"/>

@@ -3,6 +3,7 @@ package scenarios;
 import dataProviders.DataProviders;
 import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -10,9 +11,9 @@ import org.testng.annotations.Test;
 import pageObjects.WebPageObject;
 import setup.BaseTest;
 
-public class IOSWebTests extends BaseTest {
+public class WebMobileTests extends BaseTest {
 
-    @Test(description = "Make sure receiving relevant results by search in Google search page",
+    @Test(groups = {"web"}, description = "Make sure receiving relevant results by search in Google search page",
           dataProviderClass = DataProviders.class, dataProvider = "webTestData")
     public void testValidateSearchResults(String searchTerm, String site) {
 
@@ -27,10 +28,7 @@ public class IOSWebTests extends BaseTest {
         WebElement searchField = webPageObject.getSearchField();
         searchField.click();
         searchField.sendKeys(searchTerm);
-        searchField.submit();
-
-        new WebDriverWait(getDriver(), 70).until(
-            wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+        searchField.sendKeys(Keys.ENTER);
 
         // get list of search result
         List<WebElement> searchResults = webPageObject.getSearchList();

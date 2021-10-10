@@ -5,13 +5,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.BaseTest;
 
-public class IOSNativeTests extends BaseTest {
+public class NativeMobileTests extends BaseTest {
 
-    @Test(description = "Register a new account and sign in test in IOS device in EPAM cloud",
-          dataProvider = "nativeTestData",
-          dataProviderClass = DataProviders.class)
-    public void simpleNativeTest(String userEmail, String userName, String userPassword) throws
-        IllegalAccessException, NoSuchFieldException, InstantiationException {
+    @Test(groups = {"native"}, description = "Register a new account and sign in test",
+          dataProviderClass = DataProviders.class, dataProvider = "nativeTestData")
+    public void testRegisterAccount(String userEmail, String userName, String userPassword) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
 
         getPo().getWelement("registerBtn").click();
         getPo().getWelement("mailField").sendKeys(userEmail);
@@ -24,9 +22,9 @@ public class IOSNativeTests extends BaseTest {
         getPo().getWelement("signInBtn").click();
 
         String actualBudgetPageName = getPo().getWelement("budgetPageName").getText();
-        String expectedBudgetPageName = "Budget";
+        String expectedStartOfBudgetPageName = "Budget";
 
-        Assert.assertEquals(actualBudgetPageName, expectedBudgetPageName);
+        Assert.assertTrue(actualBudgetPageName.startsWith(expectedStartOfBudgetPageName));
         System.out.println("Registration was successful");
     }
 }

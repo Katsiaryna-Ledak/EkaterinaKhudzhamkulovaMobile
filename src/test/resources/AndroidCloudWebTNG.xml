@@ -2,7 +2,7 @@
 <suite name="Android Web mobile testing Suite for EPAM Mobile Cloud">
   <parameter name="execution" value="cloud"/>
   <parameter name="appType" value="web"></parameter>
-  <parameter name="udid" value="9A311FFAZ001WY"/>
+  <parameter name="udid" value="0A071FDD4005QL"/>
   <parameter name="platformName" value="Android"></parameter>
   <parameter name="browserName" value="Chrome"></parameter>
   <test name="Cloud Web Android tests">

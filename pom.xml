@@ -42,7 +42,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <token>enter your token here</token>
+                        <token>Enter your token here</token>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -79,7 +79,7 @@
         </profile>
 
         <profile>
-            <id>cloudWeb</id>
+            <id>AndroidCloudWeb</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -89,7 +89,7 @@
         </profile>
 
         <profile>
-            <id>cloudNative</id>
+            <id>AndroidCloudNative</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>

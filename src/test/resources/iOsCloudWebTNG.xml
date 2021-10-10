@@ -6,8 +6,13 @@
   <parameter name="platformName" value="iOS"/>
   <parameter name="browserName" value="Safari"/>
   <test name="Cloud web IOS tests">
-    <classes>
-      <class name="scenarios.IOSWebTests"/>
-    </classes>
+    <groups>
+      <run>
+        <include name="web"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="scenarios"/>
+    </packages>
   </test>
 </suite>

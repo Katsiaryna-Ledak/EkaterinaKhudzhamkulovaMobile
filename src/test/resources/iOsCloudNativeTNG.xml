@@ -6,8 +6,13 @@
   <parameter name="platformName" value="iOS"/>
   <parameter name="bundleId" value="com.epam.EPAMTestApp.ii"/>
   <test name="Cloud native IOS tests">
-    <classes>
-      <class name="scenarios.IOSNativeTests"/>
-    </classes>
+    <groups>
+      <run>
+        <include name="native"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="scenarios"/>
+    </packages>
   </test>
 </suite>
