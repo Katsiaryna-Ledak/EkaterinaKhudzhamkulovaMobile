@@ -9,7 +9,7 @@ public class NativeMobileTests extends BaseTest {
 
     @Test(groups = {"native"}, description = "Register a new account and sign in test",
           dataProviderClass = DataProviders.class, dataProvider = "nativeTestData")
-    public void testRegisterAccount(String userEmail, String userName, String userPassword) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public void testRegisterAccount(String userEmail, String userName, String userPassword, String keyWord) throws NoSuchFieldException, IllegalAccessException, InstantiationException {
 
         getPo().getWelement("registerBtn").click();
         getPo().getWelement("mailField").sendKeys(userEmail);
@@ -22,9 +22,8 @@ public class NativeMobileTests extends BaseTest {
         getPo().getWelement("signInBtn").click();
 
         String actualBudgetPageName = getPo().getWelement("budgetPageName").getText();
-        String expectedStartOfBudgetPageName = "Budget";
 
-        Assert.assertTrue(actualBudgetPageName.startsWith(expectedStartOfBudgetPageName));
+        Assert.assertTrue(actualBudgetPageName.startsWith(keyWord));
         System.out.println("Registration was successful");
     }
 }

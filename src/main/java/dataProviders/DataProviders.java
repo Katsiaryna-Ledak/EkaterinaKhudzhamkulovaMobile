@@ -10,7 +10,8 @@ public class DataProviders {
         return new Object[][] {{
             TestProperties.getTestNativeDataProperties().getProperty("USER_EMAIL"),
             TestProperties.getTestNativeDataProperties().getProperty("USER_NAME"),
-            TestProperties.getTestNativeDataProperties().getProperty("USER_PASSWORD")}};
+            TestProperties.getTestNativeDataProperties().getProperty("USER_PASSWORD"),
+            TestProperties.getTestNativeDataProperties().getProperty("KEY_WORD")}};
     }
 
     @DataProvider(name = "webTestData")
